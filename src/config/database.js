@@ -1,4 +1,4 @@
-require('gotenv/config')
+require('dotenv/config')
 
 //configurações de ambiente do banco de dados
 
@@ -10,7 +10,7 @@ module.exports = {
   database: process.env.DB_NAME,
   define: {
     timestamp: true,
-    undescored: true,
-    endescoredAll: true,
+    underscored: true,
+    underscoredAll: true,
   },
 }
