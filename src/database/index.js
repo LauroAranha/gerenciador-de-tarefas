@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize'
 import config from '../config/database'
-//import Model from '../models/xxxxx'
+import User from '../models/user'
 
-const models = [] //declaração da constante models, que chama todas as classes criadas até então
+const models = [User] //declaração da constante models, que chama todas as classes criadas até então
 
 //classe do banco de dados
 class Database {
