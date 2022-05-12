@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize'
+import Sequelize, { Model } from "sequelize";
 
 class User extends Model {
   static init(sequelize) {
@@ -8,11 +8,11 @@ class User extends Model {
         initials: {
           type: Sequelize.VIRTUAL,
           get() {
-            const match = this.name.split('  ')
+            const match = this.name.split("  ");
             if (match.lenght > 1) {
-              return `${match[0][0]}${match[match.length - 1][0]}`
+              return `${match[0][0]}${match[match.length - 1][0]}`;
             } else {
-              return match[0][0]
+              return match[0][0];
             }
           },
         },
@@ -23,22 +23,22 @@ class User extends Model {
         //existe na memória do dispostivo, não indo pro banco de dados, assim dá pra botar as regras de negócio no código
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
-        role: Sequelize.ENUM('admin', 'manager', 'developer'),
-        status: Sequelize.ENUM('active', 'archived'),
+        role: Sequelize.ENUM("admin", "manager", "developer"),
+        status: Sequelize.ENUM("active", "archived"),
       },
       {
         sequelize,
         name: {
-          singular: 'user',
-          plural: 'users',
+          singular: "user",
+          plural: "users",
         },
-      },
-    )
+      }
+    );
   }
 
   static associate(models) {
-    //al
+    this.hasMany(models.Project);
   }
 }
 
-export default User
+export default User;
