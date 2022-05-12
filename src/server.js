@@ -1,26 +1,30 @@
-import 'dotenv/config'
-import './database'
+import "dotenv/config";
+import "./database";
 
-import AdminJS from 'adminjs'
-import AdminJSExpress from '@adminjs/express'
-import AdminJSSequelize from '@adminjs/sequelize'
-import express from 'express'
+import AdminJS from "adminjs";
+import AdminJSExpress from "@adminjs/express";
+import AdminJSSequelize from "@adminjs/sequelize";
+import express from "express";
 
-import User from './models/user'
+import UsersResource from "./resources/UsersResource";
+import ProjectsResource from "./resources/ProjectsResource";
 
-AdminJS.registerAdapter(AdminJSSequelize)
+import locale from "./locales";
 
-const app = express()
+AdminJS.registerAdapter(AdminJSSequelize);
+
+const app = express();
 
 const adminJS = new AdminJS({
   databases: [],
-  rootPath: '/admin',
-  resources: [User],
-})
+  rootPath: "/admin",
+  resources: [UsersResource, ProjectsResource],
+  ...locale,
+});
 
-const router = AdminJSExpress.buildRouter(adminJS)
+const router = AdminJSExpress.buildRouter(adminJS);
 
-app.use(adminJS.options.rootPath, router)
+app.use(adminJS.options.rootPath, router);
 app.listen(5000, () => {
-  console.log('tá rodando no http://localhost:5000/admin')
-})
+  console.log("tá rodando no http://localhost:5000/admin");
+});
