@@ -10,9 +10,10 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        allowNull:false,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       status: {
         type: Sequelize.ENUM("active", "archived"),
@@ -23,21 +24,22 @@ module.exports = {
         refereces: {
           model: "users",
           key: "id",
-          onUpdate: "CASCADE",
-          onDelete: "SET NULL",
-          allowNull: false,
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
+        allowNull: false,
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
       },
     });
   },
+  //método executado pra desfazer essa migration
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable("projects");
   },

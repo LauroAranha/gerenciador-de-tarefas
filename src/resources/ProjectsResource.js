@@ -36,7 +36,7 @@ export default {
         ],
       },
       createdAt: {
-        position: 7,
+        position: 6,
         isVisible: {
           list: true,
           filter: false,
@@ -45,7 +45,7 @@ export default {
         },
       },
       updatedAt: {
-        position: 8,
+        position: 7,
         isVisible: {
           list: true,
           filter: false,

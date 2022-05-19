@@ -8,12 +8,8 @@ class User extends Model {
         initials: {
           type: Sequelize.VIRTUAL,
           get() {
-            const match = this.name.split("  ");
-            if (match.lenght > 1) {
-              return `${match[0][0]}${match[match.length - 1][0]}`;
-            } else {
-              return match[0][0];
-            }
+            const match = this.name.split(" ");
+            return match.map((partName) => partName[0]).join("");
           },
         },
         name: Sequelize.STRING,
@@ -38,6 +34,7 @@ class User extends Model {
 
   static associate(models) {
     this.hasMany(models.Project);
+    this.hasMany(models.Task);
   }
 }
 
