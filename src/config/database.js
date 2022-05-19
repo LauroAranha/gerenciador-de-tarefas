@@ -1,9 +1,9 @@
-require('dotenv/config')
+require("dotenv/config");
 
 //configurações de ambiente do banco de dados
 
 module.exports = {
-  dialect: 'postgres',
+  dialect: "postgres",
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
@@ -13,4 +13,14 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
-}
+  production: {
+    use_env_variable: "DATABASE_URL",
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  },
+};
