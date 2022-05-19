@@ -1,4 +1,5 @@
 import "dotenv/config";
+require("dotenv").config();
 import "./database";
 
 import AdminJS from "adminjs";
@@ -8,6 +9,7 @@ import express from "express";
 
 import UsersResource from "./resources/UsersResource";
 import ProjectsResource from "./resources/ProjectsResource";
+import TasksResource from "./resources/TasksResource";
 
 import locale from "./locales";
 
@@ -18,7 +20,7 @@ const app = express();
 const adminJS = new AdminJS({
   databases: [],
   rootPath: "/admin",
-  resources: [UsersResource, ProjectsResource],
+  resources: [UsersResource, ProjectsResource, TasksResource],
   ...locale,
 });
 

@@ -1,9 +1,12 @@
 import Sequelize from "sequelize";
+
 import config from "../config/database";
+
 import User from "../models/user";
 import Project from "../models/project";
+import Task from "../models/task"
 
-const models = [User, Project]; //declaração da constante models, que chama todas as classes criadas até então
+const models = [Task, User, Project]; //declaração da constante models, que chama todas as classes criadas até então
 
 //classe do banco de dados
 class Database {
